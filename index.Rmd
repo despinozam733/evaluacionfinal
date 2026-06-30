@@ -1,0 +1,55 @@
+---
+title: "TRABAJO FINAL: Análisis LISA"
+output: 
+  flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard) # always
+library(ggplot2)
+library(sf)
+```
+
+```{r}
+# 1. Definimos los links directos a tus 4 mapas RDS en tu GitHub (con /raw/main/)
+map1link = "https://github.com/despinozam733/evaluacionfinal/raw/main/map1.rds"
+map2link = "https://github.com/despinozam733/evaluacionfinal/raw/main/map2.rds"
+map3link = "https://github.com/despinozam733/evaluacionfinal/raw/main/map3.rds"
+map4link = "https://github.com/despinozam733/evaluacionfinal/raw/main/map4.rds"
+
+# 2. Usamos la función url() que es la que no te da fallos según el profe
+viz1 = url(map1link)
+viz2 = url(map2link)
+viz3 = url(map3link)
+viz4 = url(map4link)
+```
+
+## Sidebar {.sidebar}
+
+Análisis LISA: Educación en Lima
+
+## Column {.tabset .tabset-fade}
+
+### Mapa Rook
+
+```{r}
+readRDS(viz1)
+```
+
+### Mapa Queen
+
+```{r}
+readRDS(viz2)
+```
+
+### Mapa Vecinos Cercanos (KNN=4)
+
+```{r}
+readRDS(viz3)
+```
+
+### Mapa Vecinos a distancia fija (D=25 km)
+
+```{r}
+readRDS(viz4)
+```
